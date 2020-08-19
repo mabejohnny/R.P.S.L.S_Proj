@@ -44,13 +44,14 @@ constructor() {
         }
     }
 
-    if(this.playerOne.score > this.playerTwo){
+    if(this.playerOne.score > this.playerTwo) {
         console.log(this.playerOne.name + "wins this game!");
     }
-    else(this.playerOne.score < this.playerTwo){
+    else if(this.playerOne.score < this.playerTwo) {
         console.log(this.playertwo.name + "wins this game!");
     }
-        }
+}
+
 displayRules() {
     console.log("Welocome to the War Dice Game!");
     console.log("Two players will roll 6 dics and total up their results");
