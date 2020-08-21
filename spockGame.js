@@ -235,90 +235,49 @@ class Computer extends Player {
 
 }
 
-"choice": "rock",                              
-        "beats": ["scissors, lizard"], //scissors, rock beat lizard --
-        "losesTo": ["paper, Spock"],   //paper, spock beat rock--
-	},                                  //rock and spock beat scissors --
-	{                                   //scissor and lizard beat paper--
-        "choice": "paper",              //paper and lizard beat spock
-        "beats": ["rock, spock"],
-        "losesTo": ["scissors, lizard"]
-	},
-	{
-        "choice": "scissors",
-        "beats": ["paper, lizard"],
-        "losesTo": ["rock, spock"],
-	},
-	{
-        "choice": "lizard",
-        "beats": ["spock, paper"],
-        "losesTo": ["rock, scissors"],   
-	},
-	{
-        "choice": "spock",
-        "beats": ["scissor, rock"],
-        "losesTo": ["lizard, paper"],
-    }
-];
+
         letsDoTheMathToFindAWinner(playerOneGesture, playerTwoGesture, playerOneName, playerTwoName) {
 
             alert( "ARE YOU READY" + playerOneName.toUpperCase() + playerTwoName.toUpperCase() + "?!?!");
             
             let theWinner = [];
 
-            if(playerOneGesture === playerTwoGesture){
+            if(playerOneGesture == playerTwoGesture){
                 alert("It's a tie!");
                 } 
-
                 else if(playerOneGesture == "rock" || "spock" && playerTwoGesture == "scissors"){ 
                     alert(playerOneName + "wins!");
-            }
-             
+            } 
             if(playerOneGesture == "rock" || "scissors" && playerTwoGesture == "lizard"){
                 alert(playerOneName + "wins!");
                 }
-
                 else if(playerOneGesture == "paper" || "spock" && playerTwoGesture == "rock"){
                     alert(playerOneName + "wins!");
-            }
-
+                }
             if(playerOneGesture == "scissors" || "lizard" && playerTwoGesture == "paper"){
                 alert(playerOneName + "wins!");  
+                }
+                else if(playerOneGesture == "paper" || "lizard" && playerTwoGesture == "spock"){
+                    alert(playerOneName + "wins!");
             }
-
-            else if(playerOneGesture == "paper" || "lizard" && playerTwoGesture == "spock"){
-                alert(playerOneName + "wins!");
-            }
-        
-           
             if(playerTwoGesture == "paper" || "lizard" && playerOneGesture == "spock"){
-                alert(playerOneName + "wins!");
-            
+                alert(playerTwoName + "wins!");
                 }
                 else if(playerTwoGesture == "scissors" || "lizard" && playerOneGesture == "paper"){
-
+                    alert(playerTwoName + "wins!");
+            }
+            if(playerTwoGesture == "rock" || "spock" && playerOneGesture == "scissors"){
+                alert(playerTwoName + "wins!");
                 }
-            if(el.parents[0] === parents[0].id || el.parents[0] === parents[1].id){
-                    return true;
-                  }
-                  else{
-                    return false;
-                  }
-                }  
-                else if(el.parents.length == 2 && parents.length == 2){
-                  if(el.parents[0] === parents[0].id || el.parents[0] === parents[1].id || el.parents[1] === parents[0].id || el.parents[1] === parents[1].id){
-                      return true;
-                    }
-                    else{
-                      return false;
-                    }
+                else if(playerTwoGesture == "paper" || "spock" && playerOneGesture == "rock"){
+                    alert(playerTwoName + "wins!");
                 }
-              })
-            }   
-            return siblings;
-          }
+            if(playerTwoGesture == "scissors" || "rock" && playerOneGesture == "lizard"){
+                alert(playerTwoName + "wins!");     
+                    }
+                
+            return theWinner;
           
-}
 
 
 
