@@ -99,17 +99,34 @@ class Game {
 
 
     runGame() { //"main" method
-
+        this.chooseSingleOrMultiPlayer();
         this.getTheSinglePlayersName();
         this.displayRulesForSinglePlayer(theUsersName);
         this.userChoosesTheirGesture(theUsersName)
 
 }
+    chooseSingleOrMultiPlayer(){
+
+        let chooseSingleOrMultiPlayer = promptFor("Welcome to the classic game Rock Paper Scissors Lizard Spock!" + "\n" + "For single player, type: '1'" + "\n" + "For multi-player, type: '2'")
+        let howManyPeopleArePlaying;
+        switch(chooseSingleOrMultiPlayer){
+            case '1':
+                howManyPeopleArePlaying = this.getTheSinglePlayersName();
+                break;
+            case '2':
+                howManyPeopleArePlaying = this.getBothPlayersNames();
+                break;
+                default:
+                this.chooseSingleOrMultiPlayer();
+                break;
+
+    }
+ }
 
 
     getTheSinglePlayersName() {
 
-        let theUsersName = prompt("Welcome to the classic game: + \n Rock Paper Scissors Lizard Spock!" + "\n" + "Please enter your name:")
+        let theUsersName = prompt("Please enter your name:")
         
         alert("Welcome to the game " + theUsersName + "!")
 
@@ -137,51 +154,32 @@ class Player {
         this.
     
     }
-    //             "choice": "rock",
-    //            "beats": ["scissors, lizard"],
-    //            "losesTo": ["paper, Spock"],
-    //            },{
-    //            "choice": "paper",
-    //            "beats": ["rock, spock"],
-    //            "losesTo": ["scissors, lizard"],
-    //            },{
-    //             "choice": "scissors",
-    //            "beats": ["paper, lizard"],
-    //            "losesTo": ["rock, spock"],
-    //            },{
-    //            "choice": "lizard",
-    //            "beats": ["spock, paper"],
-    //            "losesTo": ["rock, scissors"],
-    //           },{
-    //            "choice": "spock",
-    //            "beats": ["scissor, rock"],
-    //            "losesTo": ["lizard, paper"],
-    //            }];
+
 
         userChoosesTheirGesture() {
 
             let usersGestureChoice;
-            let usersGestureChoice = prompt(theUsersName + "!"+ "Choose your weapon!!!" + "\n" + "TYPE: 1 for 'rock' " + "\n" + "TYPE: 2 for 'paper' " + "\n" + "TYPE: 3 for 'scissor' " + "\n" + "TYPE: 4 for 'lizard' " + "\n" + "TYPE: 5 for 'spock' " + "\n" + "\n" + "* To return to the main menu, TYPE: 6 *");
+            let usersGestureChoice = prompt(theUsersName + "!"+ "Choose your weapon!!!" + "\n" + "TYPE: '1' for 'rock' " + "\n" + "TYPE: '2' for 'paper' " + "\n" + "TYPE: '3' for 'scissor' " + "\n" + "TYPE: '4' for 'lizard' " + "\n" + "TYPE: '5' for 'spock' " + "\n" + "\n" + "* To return to the main menu, TYPE: '6' *");
         
             switch(usersGestureChoice)
             {
                 case "1":
-                    let theyPickedRock  = letsDoTheMathToFindAWinner(userGestureChoice);
+                    let theyPickedRock  = this.letsDoTheMathToFindAWinner(userGestureChoice);
                     break;
                 case "2":
-                    let theyPickedPaper  = letsDoTheMathToFindAWinner(usersGestureChoice);
+                    let theyPickedPaper  = this.letsDoTheMathToFindAWinner(usersGestureChoice);
                     break;
                 case "3":
-                    let theyPickedscissor  = letsDoTheMathToFindAWinner(usersGestureChoice);
+                    let theyPickedscissor  = this.letsDoTheMathToFindAWinner(usersGestureChoice);
                     break;
                 case "4":
-                    let theyPickedLizard  = letsDoTheMathToFindAWinner(usersGestureChoice);
+                    let theyPickedLizard  = this.letsDoTheMathToFindAWinner(usersGestureChoice);
                     break;
                 case "5":
-                    let theyPickedSpock  = letsDoTheMathToFindAWinner(usersGestureChoice);
+                    let theyPickedSpock  = this.letsDoTheMathToFindAWinner(usersGestureChoice);
                     break;
                 case "6":
-                    //return to main menu (make sure its the main menu which prompts single or multiplayer)
+                    this.chooseSingleOrMultiPlayer()
                 default: 
                     alert("Please try again!");
                     this.userChoosesTheirGesture();
