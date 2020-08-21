@@ -188,7 +188,7 @@ class Human extends Player{
 
     chooseGesture(chooseGesture) {
 
-        let usersGestureChoice;
+        let usersGestureChoice = chooseGesture; 
         let usersGestureChoice = prompt(playerOneName + "!"+ "Choose your weapon!!!" + "\n" + "TYPE: '1' for 'rock' " + "\n" + "TYPE: '2' for 'paper' " + "\n" + "TYPE: '3' for 'scissor' " + "\n" + "TYPE: '4' for 'lizard' " + "\n" + "TYPE: '5' for 'spock' " + "\n" + "\n" + "* To return to the main menu, TYPE: '6' *");
     
         switch(usersGestureChoice)
@@ -235,41 +235,70 @@ class Computer extends Player {
 
 }
 
-//what variables am i brining down? if choose gesure sswitchcase is going to run twice, where am i holding that info for both players, and how am i displaying that to letsDoTheMath function?
-        letsDoTheMathToFindAWinner(playerOneGesture, playerTwoGesture, randomGestureForComputer, playerOneName, playerTwoName) {
+"choice": "rock",                              
+        "beats": ["scissors, lizard"], //scissors, rock beat lizard --
+        "losesTo": ["paper, Spock"],   //paper, spock beat rock--
+	},                                  //rock and spock beat scissors --
+	{                                   //scissor and lizard beat paper--
+        "choice": "paper",              //paper and lizard beat spock
+        "beats": ["rock, spock"],
+        "losesTo": ["scissors, lizard"]
+	},
+	{
+        "choice": "scissors",
+        "beats": ["paper, lizard"],
+        "losesTo": ["rock, spock"],
+	},
+	{
+        "choice": "lizard",
+        "beats": ["spock, paper"],
+        "losesTo": ["rock, scissors"],   
+	},
+	{
+        "choice": "spock",
+        "beats": ["scissor, rock"],
+        "losesTo": ["lizard, paper"],
+    }
+];
+        letsDoTheMathToFindAWinner(playerOneGesture, playerTwoGesture, playerOneName, playerTwoName) {
 
             alert( "ARE YOU READY" + playerOneName.toUpperCase() + playerTwoName.toUpperCase() + "?!?!");
             
             let theWinner = [];
 
-            if(playerOneGestureChoice === 0 || playerTwoGestureChoice  ){
-              return siblings;
+            if(playerOneGesture === playerTwoGesture){
+                alert("It's a tie!");
+                } 
+
+                else if(playerOneGesture == "rock" || "spock" && playerTwoGesture == "scissors"){ 
+                    alert(playerOneName + "wins!");
             }
-          
-            else if(parents.length >= 1){ 
-              siblings = people.filter(function (el){
-                
-                if(el.parents.length == 0 || el === person){
-                  return false;
+             
+            if(playerOneGesture == "rock" || "scissors" && playerTwoGesture == "lizard"){
+                alert(playerOneName + "wins!");
                 }
-                else if(el.parents.length == 1 && parents.length == 1){
-                  if(el.parents[0] === parents[0].id){
-                    return true;
-                  }
-                  else{
-                    return false;
-                  }
+
+                else if(playerOneGesture == "paper" || "spock" && playerTwoGesture == "rock"){
+                    alert(playerOneName + "wins!");
+            }
+
+            if(playerOneGesture == "scissors" || "lizard" && playerTwoGesture == "paper"){
+                alert(playerOneName + "wins!");  
+            }
+
+            else if(playerOneGesture == "paper" || "lizard" && playerTwoGesture == "spock"){
+                alert(playerOneName + "wins!");
+            }
+        
+           
+            if(playerTwoGesture == "paper" || "lizard" && playerOneGesture == "spock"){
+                alert(playerOneName + "wins!");
+            
                 }
-                else if(el.parents.length == 2 && parents.length == 1){
-                  if(el.parents[0] === parents[0].id || el.parents[1] === parents[0].id){
-                    return true;
-                  }
-                  else{
-                    return false;
-                  }
+                else if(playerTwoGesture == "scissors" || "lizard" && playerOneGesture == "paper"){
+
                 }
-                else if(el.parents.length == 1 && parents.length == 2){
-                  if(el.parents[0] === parents[0].id || el.parents[0] === parents[1].id){
+            if(el.parents[0] === parents[0].id || el.parents[0] === parents[1].id){
                     return true;
                   }
                   else{
