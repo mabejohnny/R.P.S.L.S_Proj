@@ -29,64 +29,6 @@
 
 
 
-//function playerInput() {
-//let numberOfPlayersInput = prompt("Welcome To The Game! + \n Enter '1' for single player + \n Enter '2' for multiplayer")
-//
-//    if(numberOfPlayersInput === "1") {
-//        alert("You selected single player!")
-//        playerNameInputSingle();
-        
-//    }
-//    else if(numberOfPlayersInput === "2") {
-//        alert("You selected multi-player!")
-//        playerNameInputMultiPlayer();
-
-//    }
-//}
-
-
-//function playerNameInputMultiPlayer() {
-//    let userNameInputPlayerOne = prompt("Enter player '1' name:");
-//    let userNameInputPlayerTwo = prompt("Enter player '2' name:");
-//        alert("Welcome to the game! + \n + Player 1: " + userNameInputPlayerOne + "\n" + "Player 2: " + userNameInputPlayerTwo);
-
-//        runGameMultiPlayer(userNameInputPlayerOne, userNameInputPlayerTwo);
-//}
-
-//function displayRulesMultiPlayer(userNameInputPlayerOne, userNameInputPlayerTwo) {
-//      console.log("Welcome to the classic game: + \n Rock Paper Scissors Lizard Spock!");
-//    console.log(userNameInputPlayerOne + "will go first! " + "\n" + userNameInputPlayerTwo + "will go second!");
-//      console.log("Each round will be worth one point");
-//    console.log("The first player to win 2 out of 3 rounds will win the game");
-//  console.log("Remember! " + "\n" + "Rock crushes Scissor" + "\n" + "Scissor cuts Paper"+ "\n" + "Paper covers Rock"+ "\n" + "Rock crushes Lizard"+ "\n" + "Lizard poisons Spock"+ "\n" + "Spock Smashes Scissor"+ "\n" + "Scissor decapitates Lizard"+ "\n" + "Lizard eats Paper"+ "\n" + "Paper disproves Spock"+ "\n" + "Spock vaporizes Rock")
-
-//        choices = [{
-//            "choice": "rock",
-//            "beats": ["scissors, lizard"],
-//            "losesTo": ["paper, Spock"],
-//            },{
-//            "choice": "paper",
-//            "beats": ["rock, spock"],
-//            "losesTo": ["scissors, lizard"],
-//            },{
-//             "choice": "scissors",
-//            "beats": ["paper, lizard"],
-//            "losesTo": ["rock, spock"],
-//            },{
-//            "choice": "lizard",
-//            "beats": ["spock, paper"],
-//            "losesTo": ["rock, scissors"],
-//           },{
-//            "choice": "spock",
-//            "beats": ["scissor, rock"],
-//            "losesTo": ["lizard, paper"],
-//            }];
-
-//    }
-
-
-
-
 
 
 class Game {
@@ -94,7 +36,7 @@ class Game {
 
         this.playerOne = new Player(playerOneName);
         this.PlayerTwo = new Player(playerTwoName);
-
+        
 }
 
 
@@ -102,12 +44,11 @@ class Game {
        this.chooseSingleOrMultiPlayer();
        let playerOneGesture = this.playerOne.chooseGesture();
        let playerTwoGesture = this.playerTwo.chooseGesture();
-    
+        this.letsDoTheMathToFindAWinner(playerOneGesture, playerTwoGesture);
 }
 
 
     chooseSingleOrMultiPlayer(){
-        let chooseSingleOrMultiPlayer;
         let chooseSingleOrMultiPlayer = prompt("Welcome to the classic game Rock Paper Scissors Lizard Spock!" + "\n" + "For single player, type: '1'" + "\n" + "For multi-player, type: '2'")
         
         switch(chooseSingleOrMultiPlayer){
@@ -117,7 +58,8 @@ class Game {
                 chooseSingleOrMultiPlayer = this.getTheSinglePlayersName();
                 break;
             case '2':
-
+                this.playerOne = new Human();
+                this.playerTwo = new Human();
                 chooseSingleOrMultiPlayer = this.getBothPlayersNames();
                 break;
                 default:
@@ -131,42 +73,51 @@ class Game {
 
     getTheSinglePlayersName() {
 
-        let theUsersName = prompt("Please enter your name:");
+        this.playerOne.name = prompt("Please enter your name:");
         
-        alert("Welcome to the game " + theUsersName + "!" + "\n" + "I am comPute_R.  The artificial intelligence that will be beating you today ");
+        alert("Welcome to the game " + this.playerOne.name + "!" + "\n" + "I am comPute_R.  The artificial intelligence that will be beating you today ");
 
-        this.displayRulesForSinglePlayer(theUsersName);
+        this.displayRulesForSinglePlayer();
 
 }
 
 
     getBothPlayerNames() {
 
-        let playerOneName = prompt("Enter the name of 'Player One':");
-        let playerTwoName = prompt("Enter the name of 'Player Two':")
-        alert("Welcome to the game " + playerOneName + playerTwoName + "!");
+        this.playerOne.name = prompt("Enter the name of 'Player One':");
+        this.playerTwo.name = prompt("Enter the name of 'Player Two':")
+        alert("Welcome to the game " + this.playerOne.name + this.playerTwo.name + "!");
 
-        this.displayRulesForMultiPlayer(playerOneName,playerTwoName)
+        this.displayRulesForMultiPlayer()
 
 }
 
 
-    displayRulesForSinglePlayer(playerOneName) {
+    displayRulesForSinglePlayer() {
 
-        alert("Welcome to your own worst nightmare " + playerOneName + "!" + "\n" +"Remember me, ahh yes, your good ol' archenemy comPute_R! Ill be your captain this evening. " + "\n" + "- Each round will be worth one point" + "\n" + "- The first player (which will be comPute_R) to win 2 out of 3 rounds will win the game!");
+        alert("Welcome to your worst nightmare " + this.playerOne.name + "!" + "\n" +"Remember me, ahh yes, your good ol' archenemy comPute_R! Ill be your captain this evening. " + "\n" + "- Each round will be worth one point" + "\n" + "- The first player (which will be comPute_R) to win 2 out of 3 rounds will win the game!");
     
         alert("Remember! " + "\n" + "Rock crushes Scissor" + "\n" + "Scissor cuts Paper"+ "\n" + "Paper covers Rock"+ "\n" + "Rock crushes Lizard"+ "\n" + "Lizard poisons Spock"+ "\n" + "Spock Smashes Scissor"+ "\n" + "Scissor decapitates Lizard"+ "\n" + "Lizard eats Paper"+ "\n" + "Paper disproves Spock"+ "\n" + "Spock vaporizes Rock");
-        alert("Ohh, and one more thing, comPute_R DESTROYS" + playerOneName + "!");
+        alert("Ohh, and one more thing... comPute_R DESTROYS " + this.playerOne.name + "!");
 
     }
 
 
-    displayRulesForMultiPlayer(playerOneName, playerTwoName) {
+    displayRulesForMultiPlayer() {
 
-        alert(playerOneName + ", you will go first." + "\n" + playerTwoName + ", you will go second"+ "\n" + "- Each round will be worth one point" + "\n" + "- The first player to win 2 out of 3 rounds will win the game!");
+        alert(this.playerOne.name + ", you will go first." + "\n" + this.playerOne.name + ", you will go second"+ "\n" + "- Each round will be worth one point" + "\n" + "- The first player to win 2 out of 3 rounds will win the game!");
 
         alert("Remember! " + "\n" + "Rock crushes Scissor" + "\n" + "Scissor cuts Paper"+ "\n" + "Paper covers Rock"+ "\n" + "Rock crushes Lizard"+ "\n" + "Lizard poisons Spock"+ "\n" + "Spock Smashes Scissor"+ "\n" + "Scissor decapitates Lizard"+ "\n" + "Lizard eats Paper"+ "\n" + "Paper disproves Spock"+ "\n" + "Spock vaporizes Rock");
     
+    }
+
+}
+
+
+class Gestures {
+    constructor(){
+    this.Gestures = ["rock", "paper", "scissors", "lizard", "spock"]
+
     }
 
 }
@@ -178,36 +129,36 @@ class Player {
         this.score = 0;
         this.name = name;
         this.typeOfGestures = this.typeOfGestures
-        this.Gestures=[new Gestures("rock"), new Gestures("paper"), new Gestures("scissors"), new Gestures("lizard"), new Gestures("spock")]   
+        this.Gestures = new Gestures(); 
     
     }
             
 }
 
-class Human extends Player{
+class Human extends Player {
+    constructor(name){
+        super(name);
 
-    chooseGesture(chooseGesture) {
+    }
 
-        let usersGestureChoice = chooseGesture; 
-        let usersGestureChoice = prompt(playerOneName + "!"+ "Choose your weapon!!!" + "\n" + "TYPE: '1' for 'rock' " + "\n" + "TYPE: '2' for 'paper' " + "\n" + "TYPE: '3' for 'scissor' " + "\n" + "TYPE: '4' for 'lizard' " + "\n" + "TYPE: '5' for 'spock' " + "\n" + "\n" + "* To return to the main menu, TYPE: '6' *");
+
+    chooseGesture(chooseGesture) {     
+
+        
+        let usersGestureChoice = prompt("Choose your weapon!!!" + "\n" + "TYPE: '1' for 'rock' " + "\n" + "TYPE: '2' for 'paper' " + "\n" + "TYPE: '3' for 'scissor' " + "\n" + "TYPE: '4' for 'lizard' " + "\n" + "TYPE: '5' for 'spock' " + "\n" + "\n" + "* To return to the main menu, TYPE: '6' *");
     
-        switch(usersGestureChoice)
+       switch(usersGestureChoice)
         {
             case "1":
-                let userChoiceOne  = this.letsDoTheMathToFindAWinner(userGestureChoice);
-                break;
+                return "rock" 
             case "2":
-                let userChoiceTwo  = this.letsDoTheMathToFindAWinner(usersGestureChoice);
-                break;
+                return "paper"
             case "3":
-                let userChoiceThree  = this.letsDoTheMathToFindAWinner(usersGestureChoice);
-                break;
+                return "scissor"
             case "4":
-                let userChoiceFour  = this.letsDoTheMathToFindAWinner(usersGestureChoice);
-                break;
+                return "lizard"
             case "5":
-                let userChoiceFive  = this.letsDoTheMathToFindAWinner(usersGestureChoice);
-                break;
+                return "spock"
             case "6":
                 this.chooseSingleOrMultiPlayer()
             default: 
@@ -227,7 +178,7 @@ class Computer extends Player {
 
         chooseGesture() {
 
-            let randomGestureForComputer = this.Gestures[Math.floor(Math.random() * this.Gestures.length)];{
+            let randomGestureForComputer = this.Gestures[Math.floor(Math.random() * this.Gestures.length)]; {
     
             return randomGestureForComputer;
 
@@ -236,74 +187,75 @@ class Computer extends Player {
 }
 
 
-        letsDoTheMathToFindAWinner(playerOneGesture, playerTwoGesture, playerOneName, playerTwoName) {
+        letsDoTheMathToFindAWinner(playerOneGesture, playerTwoGesture) {
 
-            alert( "ARE YOU READY" + playerOneName.toUpperCase() + playerTwoName.toUpperCase() + "?!?!");
+            alert( "ARE YOU READY" + this.playerOne.name.toUpperCase() + playerTwoName.toUpperCase() + "?!?!");
             
             let theWinner = [];
+
+            while(this.playerOne.score < 3 && this.playerTwo.score < 3) {
+                let playerOneTotal = this.playerOne.chooseGesture(this.Gestures);
+                let playerTwoTotal = this.playerTwo.chooseGesture(this.Gestures);
 
             if(playerOneGesture == playerTwoGesture){
                 alert("It's a tie!");
                 } 
-                else if(playerOneGesture == "rock" || "spock" && playerTwoGesture == "scissors"){ 
-                    alert(playerOneName + "wins!");
+                else if(playerOneGesture == "rock" || playerOneGesture == "spock" && playerTwoGesture == "scissors"){ 
+                    alert(this.playerOne.name + "wins!");
+                    this.playerOne.score++
             } 
-            if(playerOneGesture == "rock" || "scissors" && playerTwoGesture == "lizard"){
-                alert(playerOneName + "wins!");
+            if(playerOneGesture == "rock" || playerOneGesture == "scissors" && playerTwoGesture == "lizard"){
+                alert(this.playerOne.name + "wins!");
+                this.playerOne.score++
                 }
-                else if(playerOneGesture == "paper" || "spock" && playerTwoGesture == "rock"){
-                    alert(playerOneName + "wins!");
+                else if(playerOneGesture == "paper" || playerOneGesture == "spock" && playerTwoGesture == "rock"){
+                    alert(this.playerOne.name + "wins!");
+                    this.playerOne.score++
                 }
-            if(playerOneGesture == "scissors" || "lizard" && playerTwoGesture == "paper"){
-                alert(playerOneName + "wins!");  
+            if(playerOneGesture == "scissors" || playerOneGesture == "lizard" && playerTwoGesture == "paper"){
+                alert(this.playerOne.name + "wins!"); 
+                this.playerOne.score++ 
                 }
-                else if(playerOneGesture == "paper" || "lizard" && playerTwoGesture == "spock"){
-                    alert(playerOneName + "wins!");
+                else if(playerOneGesture == "paper" || playerOneGesture == "lizard" && playerTwoGesture == "spock"){
+                    alert(this.playerOne.name + "wins!");
+                    this.playerOne.score++
             }
-            if(playerTwoGesture == "paper" || "lizard" && playerOneGesture == "spock"){
-                alert(playerTwoName + "wins!");
+            if(playerTwoGesture == "paper" || playerTwoGesture == "lizard" && playerOneGesture == "spock"){
+                alert(this.playerTwo.name + "wins!");
+                this.playerTwo.score++;
                 }
-                else if(playerTwoGesture == "scissors" || "lizard" && playerOneGesture == "paper"){
-                    alert(playerTwoName + "wins!");
+                else if(playerTwoGesture == "scissors" || playerTwoGesture == "lizard" && playerOneGesture == "paper"){
+                    alert(this.playerTwo.name + "wins!");
+                    this.playerTwo.score++;
             }
-            if(playerTwoGesture == "rock" || "spock" && playerOneGesture == "scissors"){
-                alert(playerTwoName + "wins!");
+            if(playerTwoGesture == "rock" || playerTwoGesture == "spock" && playerOneGesture == "scissors"){
+                alert(this.playerTwo.name + "wins!");
+                this.playerTwo.score++;
                 }
-                else if(playerTwoGesture == "paper" || "spock" && playerOneGesture == "rock"){
-                    alert(playerTwoName + "wins!");
+                else if(playerTwoGesture == "paper" || playerTwoGesture == "spock" && playerOneGesture == "rock"){
+                    alert(this.playerTwo.name + "wins!");
+                    this.playerTwo.score++;
                 }
-            if(playerTwoGesture == "scissors" || "rock" && playerOneGesture == "lizard"){
-                alert(playerTwoName + "wins!");     
+            if(playerTwoGesture == "scissors" || playerTwoGesture == "rock" && playerOneGesture == "lizard"){
+                alert(this.playerTwo.name + "wins!"); 
+                this.playerTwo.score++;    
                     }
                 
-            return theWinner;
+                    this.displayGameWinner();
+                }
+            }
+        
           
-
-
-
-
-
+        displayGameWinner() {
+            if(this.playerOne.score > this.playerTwo.score) {
+              alert(playerOneName + " wins this game!");
+            }
+            else {
+              alert(playerTwoName + " wins this round!");
+            }
+        }
+    }
 
 
 let game = new Game();
 game.runGame();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
