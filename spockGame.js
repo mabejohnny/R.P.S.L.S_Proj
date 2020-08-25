@@ -130,6 +130,8 @@ class Game {
         this.playerTwo.name +
         ", you will go second" +
         "\n" +
+        "" +
+        "\n" +
         "- Each round will be worth one point" +
         "\n" +
         "- The first player to win 2 out of 3 rounds will win the game!"
@@ -163,15 +165,16 @@ class Game {
   letsDoTheMathToFindAWinner(playerOneGesture, playerTwoGesture) {
     let theWinner = [];
 
+    //  if (this.playerOne.score > this.playerTwo.score) {
+    //   alert(this.playerOne.name + " wins this round!");
+    // } else if (this.playerOne.score < this.playerTwo.score) {
+    //    alert(this.playerTwo.name + " wins this round!");
+    //  }
+
     while (this.playerOne.score < 3 && this.playerTwo.score < 3) {
       let playerOneTotal = this.playerOne.chooseGesture(this.Gestures);
       let playerTwoTotal = this.playerTwo.chooseGesture(this.Gestures);
 
-      if (playerOneGesture > playerTwoGesture) {
-        alert(this.playerOne.name + " wins this round!");
-      } else if (playerOneGesture < playerTwoGesture) {
-        alert(this.playerTwo.name + " wins this round!");
-      }
       if (playerOneGesture == playerTwoGesture) {
         alert("It's a tie!");
       } else if (
@@ -179,6 +182,7 @@ class Game {
         (playerOneGesture == "spock" && playerTwoGesture == "scissors")
       ) {
         this.playerOne.score++;
+        this.displayRoundWinner();
       }
       if (
         playerOneGesture == "rock" ||
@@ -230,8 +234,15 @@ class Game {
       ) {
         this.playerTwo.score++;
       }
-
+      this.displayRoundWinner();
       this.displayGameWinner();
+    }
+  }
+  displayRoundWinner() {
+    if (this.playerOne.score > this.playerTwo.score) {
+      alert(this.playerOne.name + " wins this round!");
+    } else {
+      alert(this.playerTwo.name + " wins this round!");
     }
   }
 
