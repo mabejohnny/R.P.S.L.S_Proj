@@ -178,88 +178,114 @@ class Game {
         alert(
           "paper covers rock..." + this.playerTwo.name + " wins this round!"
         );
+        this.playerTwo.score++;
       } else if (playerTwoGesture === "scissors") {
         alert(
           "rock crushes scissors..." + this.playerOne.name + " wins this round!"
         );
+        this.playerOne.score++;
       } else if (playerTwoGesture === "lizard") {
         alert(
           "rock crushes lizard..." + this.playerOne.name + " wins this round!"
         );
+        this.playerOne.score++;
       } else {
         alert("spock vaporizes rock...You Lose :(");
+        this.playerTwo.score++;
       }
     } else if (playerOneGesture === "paper") {
       if (playerTwoGesture === "rock") {
         alert(
           "paper covers rock..." + this.playerOne.name + " wins this round!"
         );
+        this.playerOne.score++;
       } else if (playerTwoGesture === "scissors") {
         alert(
           "scissors cut paper..." + this.playerTwo.name + " wins this round!"
         );
+        this.playerTwo.score++;
       } else if (playerTwoGesture === "lizard") {
         alert(
           "lizard eats paper..." + this.playerTwo.name + " wins this round!"
         );
+        this.playerTwo.score++;
       } else {
         alert("paper disproves spock <br> You Win! :)");
       }
+      this.playerTwo.score++;
     } else if (playerOneGesture === "scissors") {
       if (playerTwoGesture === "rock") {
         alert(
           "rock crushes scissors..." + this.playerTwo.name + " wins this round!"
         );
+        this.playerTwo.score++;
       } else if (playerTwoGesture === "paper") {
         alert(
           "scissors cut paper..." + this.playerOne.name + " wins this round!"
         );
+        this.playerOne.score++;
       } else if (playerTwoGesture === "lizard") {
         alert(
           "scissors decapitate lizard..." +
             this.playerOne.name +
             " wins this round!"
         );
+        this.playerOne.score++;
       } else {
-        alert("spock smashes scissors...You Lose :(");
+        alert(
+          "spock smashes scissors..." +
+            this.playerTwo.name +
+            " wins this round!"
+        );
       }
+      this.playerTwo.score++;
     } else if (playerOneGesture === "lizard") {
       if (playerTwoGesture === "rock") {
         alert(
           "rock crushes lizard..." + this.playerTwo.name + " wins this round!"
         );
+        this.playerTwo.score++;
       } else if (playerTwoGesture === "paper") {
         alert(
           "lizard eats paper..." + this.playerOne.name + " wins this round!"
         );
+        this.playerOne.score++;
       } else if (playerTwoGesture === "scissors") {
         alert(
           "scissors decapitate lizard..." +
             this.playerTwo.name +
             " wins this round!"
         );
+        this.playerTwo.score++;
       } else {
-        alert("lizard poisons spock...You Win! :)");
+        alert(
+          "lizard poisons spock..." + this.playerOne.name + " wins this round!"
+        );
       }
+      this.playerOne.score++;
     } else if (playerOneGesture === "spock") {
       if (playerTwoGesture === "rock") {
         alert(
           "spock vaporizes rock..." + this.playerOne.name + " wins this round!"
         );
+        this.playerOne.score++;
       } else if (playerTwoGesture === "paper") {
         alert(
           "paper disproves spock..." + this.playerTwo.name + " wins this round!"
         );
+        this.playerTwo.score++;
       } else if (playerTwoGesture === "scissors") {
         alert(
           "spock smashes scissors..." +
             this.playerOne.name +
             " wins this round!"
         );
+        this.playerOne.score++;
       } else {
         alert(
           "lizard poisons spock..." + this.playerTwo.name + " wins this round!"
         );
+        this.playerTwo.score++;
       }
       this.displayGameWinner();
     }
@@ -293,6 +319,8 @@ class Human extends Player {
     super(name);
   }
   chooseGesture(chooseGesture) {
+    let playerOneTotal = this.playerOne.chooseGesture(this.Gestures);
+    let playerTwoTotal = this.playerTwo.chooseGesture(this.Gestures);
     while (this.playerOne.score < 3 && this.playerTwo.score < 3) {
       let usersGestureChoice = prompt(
         "Choose your weapon!!!" +
