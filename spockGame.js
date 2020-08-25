@@ -163,70 +163,108 @@ class Game {
   }
 
   letsDoTheMathToFindAWinner(playerOneGesture, playerTwoGesture) {
-    let playerOneTotal = this.playerOne.chooseGesture(this.Gestures);
-    let playerTwoTotal = this.playerTwo.chooseGesture(this.Gestures);
-    while (this.playerOne.score < 3 && this.playerTwo.score < 3) {
-      if (playerOneGesture === playerTwoGesture) {
-        return (
-          "The computer also chose " +
+    //let playerOneTotal = this.playerOne.chooseGesture(this.Gestures);
+    //let playerTwoTotal = this.playerTwo.chooseGesture(this.Gestures);
+    //while (this.playerOne.score < 3 && this.playerTwo.score < 3) {
+    if (playerOneGesture === playerTwoGesture) {
+      alert(
+        "The computer also chose " +
           playerTwoGesture +
           "\n" +
           "The result is a tie! :|"
+      );
+    } else if (playerOneGesture === "rock") {
+      if (playerTwoGesture === "paper") {
+        alert(
+          "paper covers rock..." + this.playerTwo.name + " wins this round!"
         );
-      } else if (playerOneGesture === "rock") {
-        if (playerTwoGesture === "paper") {
-          alert("paper covers rock...You Lose :(");
-        } else if (playerTwoGesture === "scissors") {
-          alert("rock crushes scissors...You Win! :)");
-        } else if (playerTwoGesture === "lizard") {
-          alert("rock crushes lizard...You Win!");
-        } else {
-          alert("spock vaporizes rock...You Lose :(");
-        }
-      } else if (playerOneGesture === "paper") {
-        if (playerTwoGesture === "rock") {
-          alert("paper covers rock...You Win! :)");
-        } else if (playerTwoGesture === "scissors") {
-          alert("scissors cut paper...You Lose :(");
-        } else if (playerTwoGesture === "lizard") {
-          alert("lizard eats paper...You Lose :(");
-        } else {
-          alert("paper disproves spock <br> You Win! :)");
-        }
-      } else if (playerOneGesture === "scissors") {
-        if (playerTwoGesture === "rock") {
-          alert("rock crushes scissors...You Lose :(");
-        } else if (playerTwoGesture === "paper") {
-          alert("scissors cut paper...You Win! :)");
-        } else if (playerTwoGesture === "lizard") {
-          alert("scissors decapitate lizard...You Win! :)");
-        } else {
-          alert("spock smashes scissors...You Lose :(");
-        }
-      } else if (playerOneGesture === "lizard") {
-        if (playerTwoGesture === "rock") {
-          alert("rock crushes lizard...You Lose :(");
-        } else if (playerTwoGesture === "paper") {
-          alert("lizard eats paper...You Win! :)");
-        } else if (playerTwoGesture === "scissors") {
-          alert("scissors decapitate lizard...You Lose :(");
-        } else {
-          alert("lizard poisons spock...You Win! :)");
-        }
-      } else if (playerOneGesture === "spock") {
-        if (playerTwoGesture === "rock") {
-          alert("spock vaporizes rock...You Win! :)");
-        } else if (playerTwoGesture === "paper") {
-          alert("paper disproves spock...You Lose :(");
-        } else if (playerTwoGesture === "scissors") {
-          alert("spock smashes scissors...You Win! :) ");
-        } else {
-          alert("lizard poisons spock...You Lose :(");
-        }
-        this.displayGameWinner();
+      } else if (playerTwoGesture === "scissors") {
+        alert(
+          "rock crushes scissors..." + this.playerOne.name + " wins this round!"
+        );
+      } else if (playerTwoGesture === "lizard") {
+        alert(
+          "rock crushes lizard..." + this.playerOne.name + " wins this round!"
+        );
+      } else {
+        alert("spock vaporizes rock...You Lose :(");
       }
+    } else if (playerOneGesture === "paper") {
+      if (playerTwoGesture === "rock") {
+        alert(
+          "paper covers rock..." + this.playerOne.name + " wins this round!"
+        );
+      } else if (playerTwoGesture === "scissors") {
+        alert(
+          "scissors cut paper..." + this.playerTwo.name + " wins this round!"
+        );
+      } else if (playerTwoGesture === "lizard") {
+        alert(
+          "lizard eats paper..." + this.playerTwo.name + " wins this round!"
+        );
+      } else {
+        alert("paper disproves spock <br> You Win! :)");
+      }
+    } else if (playerOneGesture === "scissors") {
+      if (playerTwoGesture === "rock") {
+        alert(
+          "rock crushes scissors..." + this.playerTwo.name + " wins this round!"
+        );
+      } else if (playerTwoGesture === "paper") {
+        alert(
+          "scissors cut paper..." + this.playerOne.name + " wins this round!"
+        );
+      } else if (playerTwoGesture === "lizard") {
+        alert(
+          "scissors decapitate lizard..." +
+            this.playerOne.name +
+            " wins this round!"
+        );
+      } else {
+        alert("spock smashes scissors...You Lose :(");
+      }
+    } else if (playerOneGesture === "lizard") {
+      if (playerTwoGesture === "rock") {
+        alert(
+          "rock crushes lizard..." + this.playerTwo.name + " wins this round!"
+        );
+      } else if (playerTwoGesture === "paper") {
+        alert(
+          "lizard eats paper..." + this.playerOne.name + " wins this round!"
+        );
+      } else if (playerTwoGesture === "scissors") {
+        alert(
+          "scissors decapitate lizard..." +
+            this.playerTwo.name +
+            " wins this round!"
+        );
+      } else {
+        alert("lizard poisons spock...You Win! :)");
+      }
+    } else if (playerOneGesture === "spock") {
+      if (playerTwoGesture === "rock") {
+        alert(
+          "spock vaporizes rock..." + this.playerOne.name + " wins this round!"
+        );
+      } else if (playerTwoGesture === "paper") {
+        alert(
+          "paper disproves spock..." + this.playerTwo.name + " wins this round!"
+        );
+      } else if (playerTwoGesture === "scissors") {
+        alert(
+          "spock smashes scissors..." +
+            this.playerOne.name +
+            " wins this round!"
+        );
+      } else {
+        alert(
+          "lizard poisons spock..." + this.playerTwo.name + " wins this round!"
+        );
+      }
+      this.displayGameWinner();
     }
   }
+
   displayGameWinner() {
     if (this.playerOne.score > this.playerTwo.score) {
       alert(this.playerOne.name + " wins this game!");
@@ -255,42 +293,43 @@ class Human extends Player {
     super(name);
   }
   chooseGesture(chooseGesture) {
-    let usersGestureChoice = prompt(
-      "Choose your weapon!!!" +
-        "\n" +
-        "TYPE: '1' for 'rock' " +
-        "\n" +
-        "TYPE: '2' for 'paper' " +
-        "\n" +
-        "TYPE: '3' for 'scissor' " +
-        "\n" +
-        "TYPE: '4' for 'lizard' " +
-        "\n" +
-        "TYPE: '5' for 'spock' " +
-        "\n" +
-        "\n" +
-        "* To return to the main menu, TYPE: '6' *"
-    );
+    while (this.playerOne.score < 3 && this.playerTwo.score < 3) {
+      let usersGestureChoice = prompt(
+        "Choose your weapon!!!" +
+          "\n" +
+          "TYPE: '1' for 'rock' " +
+          "\n" +
+          "TYPE: '2' for 'paper' " +
+          "\n" +
+          "TYPE: '3' for 'scissor' " +
+          "\n" +
+          "TYPE: '4' for 'lizard' " +
+          "\n" +
+          "TYPE: '5' for 'spock' " +
+          "\n" +
+          "\n" +
+          "* To return to the main menu, TYPE: '6' *"
+      );
 
-    switch (usersGestureChoice) {
-      case "1":
-        return "rock";
-      case "2":
-        return "paper";
-      case "3":
-        return "scissor";
-      case "4":
-        return "lizard";
-      case "5":
-        return "spock";
-      case "6":
-        game.runGame();
-      default:
-        this.chooseGesture();
+      switch (usersGestureChoice) {
+        case "1":
+          return "rock";
+        case "2":
+          return "paper";
+        case "3":
+          return "scissor";
+        case "4":
+          return "lizard";
+        case "5":
+          return "spock";
+        case "6":
+          game.runGame();
+        default:
+          this.chooseGesture();
+      }
     }
   }
 }
-
 class Computer extends Player {
   constructor(name) {
     super(name);
