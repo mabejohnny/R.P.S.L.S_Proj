@@ -82,7 +82,8 @@ class Game {
     alert(
       "Welcome to the game " +
         this.playerOne.name +
-        "and" +
+        " " +
+        " and " +
         "\n" +
         this.playerTwo.name +
         "!"
@@ -302,7 +303,7 @@ class Human extends Player {
       case "5":
         return "spock";
       case "6":
-        this.chooseSingleOrMultiPlayer();
+        game.runGame();
       default:
         this.chooseGesture();
     }
