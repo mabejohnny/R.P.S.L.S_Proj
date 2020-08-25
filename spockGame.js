@@ -82,9 +82,7 @@ class Game {
     alert(
       "Welcome to the game " +
         this.playerOne.name +
-        " " +
         " and " +
-        "\n" +
         this.playerTwo.name +
         "!"
     );
