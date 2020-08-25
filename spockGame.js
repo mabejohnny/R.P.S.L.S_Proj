@@ -1,10 +1,11 @@
 "use strict";
 
-//prompt asking whether the user is playing single or multiplayer (switchcase for multiplayer with .random for single)
+//prompt asking whether the user is playing single or multiplayer (switchcase for multiplayer)
 
 //single player game:
 //welcome! plus ask for name to pass down
 //display the rules
+//display rules multi
 //prompt choices (rock,paper,spock)
 //computer random choice
 //compare user choice/random choice
@@ -13,18 +14,6 @@
 //loop back and do it again
 //best of three
 //counter for 1 point added for each win
-
-//multiplayer:
-
-//display the rules
-//prompt switchcase (computers choice will be .random)
-//display the rules
-//prompt switchcase with choices (rock,paper,spock)
-//counter for 1 point added for each win
-//best of three
-//compare the two totals of each player
-//higher total gets a point
-//best of three
 
 class Game {
   constructor() {}
@@ -172,14 +161,17 @@ class Game {
   }
 
   letsDoTheMathToFindAWinner(playerOneGesture, playerTwoGesture) {
-    // alert("ARE YOU READY?!?!");
-
     let theWinner = [];
 
     while (this.playerOne.score < 3 && this.playerTwo.score < 3) {
       let playerOneTotal = this.playerOne.chooseGesture(this.Gestures);
       let playerTwoTotal = this.playerTwo.chooseGesture(this.Gestures);
 
+      if (playerOneGesture > playerTwoGesture) {
+        alert(this.playerOne.name + " wins this round!");
+      } else if (playerOneGesture < playerTwoGesture) {
+        alert(this.playerTwo.name + " wins this round!");
+      }
       if (playerOneGesture == playerTwoGesture) {
         alert("It's a tie!");
       } else if (
