@@ -163,87 +163,68 @@ class Game {
   }
 
   letsDoTheMathToFindAWinner(playerOneGesture, playerTwoGesture) {
-    let theWinner = [];
-
-    //  if (this.playerOne.score > this.playerTwo.score) {
-    //   alert(this.playerOne.name + " wins this round!");
-    // } else if (this.playerOne.score < this.playerTwo.score) {
-    //    alert(this.playerTwo.name + " wins this round!");
-    //  }
-
-    while (this.playerOne.score < 3 && this.playerTwo.score < 3) {
-      let playerOneTotal = this.playerOne.chooseGesture(this.Gestures);
-      let playerTwoTotal = this.playerTwo.chooseGesture(this.Gestures);
-
-      if (playerOneGesture == playerTwoGesture) {
-        alert("It's a tie!");
-      } else if (
-        playerOneGesture == "rock" ||
-        (playerOneGesture == "spock" && playerTwoGesture == "scissors")
-      ) {
-        this.playerOne.score++;
-        this.displayRoundWinner();
-      }
-      if (
-        playerOneGesture == "rock" ||
-        (playerOneGesture == "scissors" && playerTwoGesture == "lizard")
-      ) {
-        this.playerOne.score++;
-      } else if (
-        playerOneGesture == "paper" ||
-        (playerOneGesture == "spock" && playerTwoGesture == "rock")
-      ) {
-        this.playerOne.score++;
-      }
-      if (
-        playerOneGesture == "scissors" ||
-        (playerOneGesture == "lizard" && playerTwoGesture == "paper")
-      ) {
-        this.playerOne.score++;
-      } else if (
-        playerOneGesture == "paper" ||
-        (playerOneGesture == "lizard" && playerTwoGesture == "spock")
-      ) {
-        this.playerOne.score++;
-      }
-      if (
-        playerTwoGesture == "paper" ||
-        (playerTwoGesture == "lizard" && playerOneGesture == "spock")
-      ) {
-        this.playerTwo.score++;
-      } else if (
-        playerTwoGesture == "scissors" ||
-        (playerTwoGesture == "lizard" && playerOneGesture == "paper")
-      ) {
-        this.playerTwo.score++;
-      }
-      if (
-        playerTwoGesture == "rock" ||
-        (playerTwoGesture == "spock" && playerOneGesture == "scissors")
-      ) {
-        this.playerTwo.score++;
-      } else if (
-        playerTwoGesture == "paper" ||
-        (playerTwoGesture == "spock" && playerOneGesture == "rock")
-      ) {
-        this.playerTwo.score++;
-      }
-      if (
-        playerTwoGesture == "scissors" ||
-        (playerTwoGesture == "rock" && playerOneGesture == "lizard")
-      ) {
-        this.playerTwo.score++;
-      }
-      this.displayRoundWinner();
-      this.displayGameWinner();
+    //let playerOneTotal = this.playerOne.chooseGesture(this.Gestures);
+    // let playerTwoTotal = this.playerTwo.chooseGesture(this.Gestures);
+    // while (this.playerOne.score < 3 && this.playerTwo.score < 3) {
+    if (playerOneGesture == playerTwoGesture) {
+      alert("It's a tie!");
+    } else if (
+      playerOneGesture == "rock" ||
+      (playerOneGesture == "spock" && playerTwoGesture == "scissors")
+    ) {
+      this.playerOne.score++;
     }
-  }
-  displayRoundWinner() {
-    if (this.playerOne.score > this.playerTwo.score) {
-      alert(this.playerOne.name + " wins this round!");
-    } else {
-      alert(this.playerTwo.name + " wins this round!");
+    if (
+      playerOneGesture == "rock" ||
+      (playerOneGesture == "scissors" && playerTwoGesture == "lizard")
+    ) {
+      this.playerOne.score++;
+    } else if (
+      playerOneGesture == "paper" ||
+      (playerOneGesture == "spock" && playerTwoGesture == "rock")
+    ) {
+      this.playerOne.score++;
     }
+    if (
+      playerOneGesture == "scissors" ||
+      (playerOneGesture == "lizard" && playerTwoGesture == "paper")
+    ) {
+      this.playerOne.score++;
+    } else if (
+      playerOneGesture == "paper" ||
+      (playerOneGesture == "lizard" && playerTwoGesture == "spock")
+    ) {
+      this.playerOne.score++;
+    }
+    if (
+      playerTwoGesture == "paper" ||
+      (playerTwoGesture == "lizard" && playerOneGesture == "spock")
+    ) {
+      this.playerTwo.score++;
+    } else if (
+      playerTwoGesture == "scissors" ||
+      (playerTwoGesture == "lizard" && playerOneGesture == "paper")
+    ) {
+      this.playerTwo.score++;
+    }
+    if (
+      playerTwoGesture == "rock" ||
+      (playerTwoGesture == "spock" && playerOneGesture == "scissors")
+    ) {
+      this.playerTwo.score++;
+    } else if (
+      playerTwoGesture == "paper" ||
+      (playerTwoGesture == "spock" && playerOneGesture == "rock")
+    ) {
+      this.playerTwo.score++;
+    }
+    if (
+      playerTwoGesture == "scissors" ||
+      (playerTwoGesture == "rock" && playerOneGesture == "lizard")
+    ) {
+      this.playerTwo.score++;
+    }
+    this.displayGameWinner();
   }
 
   displayGameWinner() {
@@ -273,7 +254,6 @@ class Human extends Player {
   constructor(name) {
     super(name);
   }
-
   chooseGesture(chooseGesture) {
     let usersGestureChoice = prompt(
       "Choose your weapon!!!" +
