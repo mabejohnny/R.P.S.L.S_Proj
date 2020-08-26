@@ -97,9 +97,9 @@ class Game {
     alert(
       "Remember! " +
         "\n" +
-        "Rock crushes Scissor" +
+        "Rock crushes Scissors" +
         "\n" +
-        "Scissor cuts Paper" +
+        "Scissors cuts Paper" +
         "\n" +
         "Paper covers Rock" +
         "\n" +
@@ -107,9 +107,9 @@ class Game {
         "\n" +
         "Lizard poisons Spock" +
         "\n" +
-        "Spock Smashes Scissor" +
+        "Spock Smashes Scissors" +
         "\n" +
-        "Scissor decapitates Lizard" +
+        "Scissors decapitates Lizard" +
         "\n" +
         "Lizard eats Paper" +
         "\n" +
@@ -142,9 +142,9 @@ class Game {
     alert(
       "Remember! " +
         "\n" +
-        "Rock crushes Scissor" +
+        "Rock crushes Scissors" +
         "\n" +
-        "Scissor cuts Paper" +
+        "Scissors cuts Paper" +
         "\n" +
         "Paper covers Rock" +
         "\n" +
@@ -152,9 +152,9 @@ class Game {
         "\n" +
         "Lizard poisons Spock" +
         "\n" +
-        "Spock Smashes Scissor" +
+        "Spock Smashes Scissors" +
         "\n" +
-        "Scissor decapitates Lizard" +
+        "Scissors decapitates Lizard" +
         "\n" +
         "Lizard eats Paper" +
         "\n" +
@@ -350,7 +350,7 @@ class Human extends Player {
         "\n" +
         "TYPE: '2' for 'paper' " +
         "\n" +
-        "TYPE: '3' for 'scissor' " +
+        "TYPE: '3' for 'scissors' " +
         "\n" +
         "TYPE: '4' for 'lizard' " +
         "\n" +
@@ -366,7 +366,7 @@ class Human extends Player {
       case "2":
         return "paper";
       case "3":
-        return "scissor";
+        return "scissors";
       case "4":
         return "lizard";
       case "5":
