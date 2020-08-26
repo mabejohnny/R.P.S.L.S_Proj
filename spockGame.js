@@ -25,7 +25,8 @@ class Game {
       let playerTwoGesture = this.playerTwo.chooseGesture();
       this.letsDoTheMathToFindAWinner(playerOneGesture, playerTwoGesture);
     }
-    this.displayGameWinner(); //call after the loop
+    this.displayGameWinner();
+    this.wantToPlayAgain();
   }
 
   chooseSingleOrMultiPlayer() {
@@ -164,11 +165,32 @@ class Game {
         "Spock vaporizes Rock"
     );
   }
-
+  wantToPlayAgain() {
+    let userChoice = prompt(
+      "It was an epic match between" +
+        this.playerOne.name +
+        " and " +
+        this.playerTwo.name +
+        "!" +
+        "\n" +
+        "\n" +
+        "Please select from the following options:" +
+        "\n" +
+        " Type '1' to play again" +
+        "\n" +
+        " Type '2' to quit"
+    );
+    switch (userChoice) {
+      case "1":
+        game.runGame();
+      case "2":
+        break;
+      default:
+        alert("Error: Please try again");
+        this.wantToPlayAgain();
+    }
+  }
   letsDoTheMathToFindAWinner(playerOneGesture, playerTwoGesture) {
-    //let playerOneTotal = this.playerOne.chooseGesture(this.Gestures);
-    //let playerTwoTotal = this.playerTwo.chooseGesture(this.Gestures);
-    //while (this.playerOne.score < 3 && this.playerTwo.score < 3) {
     if (playerOneGesture === playerTwoGesture) {
       alert(
         "The computer also chose " +
