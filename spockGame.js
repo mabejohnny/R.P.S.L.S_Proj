@@ -57,7 +57,6 @@ class Game {
 
   getTheSinglePlayersName() {
     this.playerOne.name = prompt("Please enter your name:");
-
     alert(
       "Welcome to the game " +
         this.playerOne.name +
@@ -65,7 +64,6 @@ class Game {
         "\n" +
         "I am comPute_R.  The artificial intelligence that will be beating you today "
     );
-
     this.displayRulesForSinglePlayer();
   }
 
@@ -167,7 +165,7 @@ class Game {
   }
   wantToPlayAgain() {
     let userChoice = prompt(
-      "It was an epic match between" +
+      "It was an epic match between " +
         this.playerOne.name +
         " and " +
         this.playerTwo.name +
@@ -215,7 +213,9 @@ class Game {
         );
         this.playerOne.score++;
       } else {
-        alert("spock vaporizes rock...You Lose :(");
+        alert(
+          "spock vaporizes rock..." + this.playerTwo.name + " wins this round!"
+        );
         this.playerTwo.score++;
       }
     } else if (playerOneGesture === "paper") {
@@ -374,7 +374,7 @@ class Human extends Player {
       case "6":
         game.runGame();
       default:
-        this.chooseGesture();
+        game.runGame();
     }
   }
 }
