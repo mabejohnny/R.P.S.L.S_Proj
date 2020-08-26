@@ -19,10 +19,13 @@ class Game {
   constructor() {}
 
   runGame() {
-    this.chooseSingleOrMultiPlayer();
-    let playerOneGesture = this.playerOne.chooseGesture();
-    let playerTwoGesture = this.playerTwo.chooseGesture();
-    this.letsDoTheMathToFindAWinner(playerOneGesture, playerTwoGesture);
+    while (this.playerOne.score < 3 && this.playerTwo.score < 3) {
+      this.chooseSingleOrMultiPlayer();
+      let playerOneGesture = this.playerOne.chooseGesture();
+      let playerTwoGesture = this.playerTwo.chooseGesture();
+      this.letsDoTheMathToFindAWinner(playerOneGesture, playerTwoGesture);
+    }
+    this.displayGameWinner(); //call after the loop
   }
 
   chooseSingleOrMultiPlayer() {
@@ -287,7 +290,6 @@ class Game {
         );
         this.playerTwo.score++;
       }
-      this.displayGameWinner();
     }
   }
 
@@ -319,42 +321,38 @@ class Human extends Player {
     super(name);
   }
   chooseGesture(chooseGesture) {
-    let playerOneTotal = this.playerOne.chooseGesture(this.Gestures);
-    let playerTwoTotal = this.playerTwo.chooseGesture(this.Gestures);
-    while (this.playerOne.score < 3 && this.playerTwo.score < 3) {
-      let usersGestureChoice = prompt(
-        "Choose your weapon!!!" +
-          "\n" +
-          "TYPE: '1' for 'rock' " +
-          "\n" +
-          "TYPE: '2' for 'paper' " +
-          "\n" +
-          "TYPE: '3' for 'scissor' " +
-          "\n" +
-          "TYPE: '4' for 'lizard' " +
-          "\n" +
-          "TYPE: '5' for 'spock' " +
-          "\n" +
-          "\n" +
-          "* To return to the main menu, TYPE: '6' *"
-      );
+    let usersGestureChoice = prompt(
+      "Choose your weapon!!!" +
+        "\n" +
+        "TYPE: '1' for 'rock' " +
+        "\n" +
+        "TYPE: '2' for 'paper' " +
+        "\n" +
+        "TYPE: '3' for 'scissor' " +
+        "\n" +
+        "TYPE: '4' for 'lizard' " +
+        "\n" +
+        "TYPE: '5' for 'spock' " +
+        "\n" +
+        "\n" +
+        "* To return to the main menu, TYPE: '6' *"
+    );
 
-      switch (usersGestureChoice) {
-        case "1":
-          return "rock";
-        case "2":
-          return "paper";
-        case "3":
-          return "scissor";
-        case "4":
-          return "lizard";
-        case "5":
-          return "spock";
-        case "6":
-          game.runGame();
-        default:
-          this.chooseGesture();
-      }
+    switch (usersGestureChoice) {
+      case "1":
+        return "rock";
+      case "2":
+        return "paper";
+      case "3":
+        return "scissor";
+      case "4":
+        return "lizard";
+      case "5":
+        return "spock";
+      case "6":
+        game.runGame();
+      default:
+        this.chooseGesture();
     }
   }
 }
