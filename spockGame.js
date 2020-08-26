@@ -1,7 +1,6 @@
 "use strict";
 
 //prompt asking whether the user is playing single or multiplayer (switchcase for multiplayer)
-
 //single player game:
 //welcome! plus ask for name to pass down
 //display the rules
