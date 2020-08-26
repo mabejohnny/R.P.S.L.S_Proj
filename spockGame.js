@@ -19,8 +19,8 @@ class Game {
   constructor() {}
 
   runGame() {
+    this.chooseSingleOrMultiPlayer();
     while (this.playerOne.score < 3 && this.playerTwo.score < 3) {
-      this.chooseSingleOrMultiPlayer();
       let playerOneGesture = this.playerOne.chooseGesture();
       let playerTwoGesture = this.playerTwo.chooseGesture();
       this.letsDoTheMathToFindAWinner(playerOneGesture, playerTwoGesture);
