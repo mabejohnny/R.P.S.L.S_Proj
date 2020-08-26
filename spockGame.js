@@ -17,7 +17,7 @@
 
 class Game {
   constructor() {}
-
+  //choose whether or not game is single/multi (contains while loop for best out of three)
   runGame() {
     this.chooseSingleOrMultiPlayer();
     while (this.playerOne.score < 3 && this.playerTwo.score < 3) {
@@ -28,7 +28,7 @@ class Game {
     this.displayGameWinner();
     this.wantToPlayAgain();
   }
-
+  //prompt for user to choose single or multi player
   chooseSingleOrMultiPlayer() {
     let chooseSingleOrMultiPlayer = prompt(
       "Welcome to the classic game Rock Paper Scissors Lizard Spock!" +
@@ -54,7 +54,7 @@ class Game {
         break;
     }
   }
-
+  //prompt for single player name
   getTheSinglePlayersName() {
     this.playerOne.name = prompt("Please enter your name:");
     alert(
@@ -66,7 +66,7 @@ class Game {
     );
     this.displayRulesForSinglePlayer();
   }
-
+  //prompt for multi player game
   getBothPlayerNames() {
     this.playerOne.name = prompt("Enter the name of 'Player One':");
     this.playerTwo.name = prompt("Enter the name of 'Player Two':");
@@ -80,7 +80,7 @@ class Game {
 
     this.displayRulesForMultiPlayer();
   }
-
+  //rules for single player
   displayRulesForSinglePlayer() {
     alert(
       "Welcome to your worst nightmare " +
@@ -123,7 +123,7 @@ class Game {
         "!"
     );
   }
-
+  //rules for multi player
   displayRulesForMultiPlayer() {
     alert(
       this.playerOne.name +
@@ -163,6 +163,7 @@ class Game {
         "Spock vaporizes Rock"
     );
   }
+  //prompt for user to choose to play again
   wantToPlayAgain() {
     let userChoice = prompt(
       "It was an epic match between " +
@@ -188,6 +189,7 @@ class Game {
         this.wantToPlayAgain();
     }
   }
+  //function to compare P1/P2 gestures/add score/display round winner
   letsDoTheMathToFindAWinner(playerOneGesture, playerTwoGesture) {
     if (playerOneGesture === playerTwoGesture) {
       alert(
@@ -314,7 +316,7 @@ class Game {
       }
     }
   }
-
+  //function to display the game winner
   displayGameWinner() {
     if (this.playerOne.score > this.playerTwo.score) {
       alert(this.playerOne.name + " wins this game!");
@@ -325,7 +327,7 @@ class Game {
 }
 class Gestures {
   constructor() {
-    this.Gestures = ["rock", "paper", "scissors", "lizard", "spock"];
+    this.Gestures = ["rock", "paper", "scissors", "lizard", "spock"]; //gestures array
   }
 }
 
@@ -339,9 +341,11 @@ class Player {
 }
 
 class Human extends Player {
+  //inheritence
   constructor(name) {
     super(name);
   }
+  //prompt/switchcase for person to choose gesture
   chooseGesture(chooseGesture) {
     let usersGestureChoice = prompt(
       "Choose your weapon!!!" +
@@ -379,11 +383,12 @@ class Human extends Player {
   }
 }
 class Computer extends Player {
+  //inheritence
   constructor(name) {
     super(name);
     this.name = "comPut_R";
   }
-
+  //funtion for computer to generate a random gesture
   chooseGesture() {
     let computerChoice = Math.random();
     if (computerChoice < 0.2) {
